@@ -1,31 +1,62 @@
 import SwiftUI
 
 struct ProfileDetailView: View {
-    @State var profile: BonsaiProfile
+    @EnvironmentObject var viewModel: BonsaiProfilesViewModel
+    @Environment(\.presentationMode) var presentationMode
+
+    let profile: BonsaiProfile // Use a constant reference
+
+    // Local state variables for editing
+    @State private var speciesName: String
+    @State private var startDate: Date
+    @State private var notes: String
+
+    init(profile: BonsaiProfile) {
+        self.profile = profile
+        _speciesName = State(initialValue: profile.speciesName)
+        _startDate = State(initialValue: profile.startDate)
+        _notes = State(initialValue: profile.notes)
+    }
 
     var body: some View {
         Form {
             Section(header: Text("Details")) {
-                Text("Species Name: \(profile.speciesName)")
-                Text("Start Date: \(profile.startDate, formatter: dateFormatter)")
+                TextField("Species Name", text: $speciesName)
+                DatePicker("Start Date", selection: $startDate, displayedComponents: [.date])
             }
             Section(header: Text("Notes")) {
-                Text(profile.notes)
+                TextEditor(text: $notes)
+                    .frame(height: 200)
+                    .border(Color(UIColor.separator))
             }
         }
-        .navigationTitle("Profile Details")
+        .navigationTitle("Edit Profile")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button("Save") {
+                    // Create an updated profile
+                    let updatedProfile = BonsaiProfile(
+                        id: profile.id, // Keep the same ID
+                        speciesName: speciesName,
+                        startDate: startDate,
+                        notes: notes
+                    )
+                    viewModel.updateProfile(updatedProfile)
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }
+        }
     }
 }
 
-private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .medium
-    return formatter
-}()
-
 struct ProfileDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileDetailView(profile: BonsaiProfile(speciesName: "Maple", startDate: Date(), notes: "Needs pruning"))
-            .environmentObject(BonsaiProfilesViewModel())
+        ProfileDetailView(profile: BonsaiProfile(
+            speciesName: "Maple",
+            startDate: Date(),
+            notes: "Needs pruning"
+        ))
+        .environmentObject(BonsaiProfilesViewModel())
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D194DBE2C972ABA00A9EFA3 /* RichTextKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2D194DBD2C972ABA00A9EFA3 /* RichTextKit */; };
+		2D194DC02C972D3100A9EFA3 /* RichTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D194DBF2C972D3100A9EFA3 /* RichTextEditor.swift */; };
 		2D2155382C971D7F00698B29 /* BonsaiTreeAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2155372C971D7F00698B29 /* BonsaiTreeAppApp.swift */; };
 		2D21553A2C971D7F00698B29 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2155392C971D7F00698B29 /* ContentView.swift */; };
 		2D21553C2C971D8100698B29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D21553B2C971D8100698B29 /* Assets.xcassets */; };
@@ -19,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D194DBF2C972D3100A9EFA3 /* RichTextEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichTextEditor.swift; sourceTree = "<group>"; };
 		2D2155342C971D7F00698B29 /* BonsaiTreeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BonsaiTreeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D2155372C971D7F00698B29 /* BonsaiTreeAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonsaiTreeAppApp.swift; sourceTree = "<group>"; };
 		2D2155392C971D7F00698B29 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D194DBE2C972ABA00A9EFA3 /* RichTextKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +65,7 @@
 		2D2155362C971D7F00698B29 /* BonsaiTreeApp */ = {
 			isa = PBXGroup;
 			children = (
+				2D194DBF2C972D3100A9EFA3 /* RichTextEditor.swift */,
 				2D2155492C97248600698B29 /* BonsaiProfile.swift */,
 				2D2155472C97248600698B29 /* BonsaiProfilesViewModel.swift */,
 				2D2155482C97248600698B29 /* ProfileView.swift */,
@@ -98,6 +103,9 @@
 			dependencies = (
 			);
 			name = BonsaiTreeApp;
+			packageProductDependencies = (
+				2D194DBD2C972ABA00A9EFA3 /* RichTextKit */,
+			);
 			productName = BonsaiTreeApp;
 			productReference = 2D2155342C971D7F00698B29 /* BonsaiTreeApp.app */;
 			productType = "com.apple.product-type.application";
@@ -126,6 +134,9 @@
 				Base,
 			);
 			mainGroup = 2D21552B2C971D7F00698B29;
+			packageReferences = (
+				2D194DBC2C972ABA00A9EFA3 /* XCRemoteSwiftPackageReference "RichTextKit" */,
+			);
 			productRefGroup = 2D2155352C971D7F00698B29 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -153,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D21554B2C97248700698B29 /* BonsaiProfilesViewModel.swift in Sources */,
+				2D194DC02C972D3100A9EFA3 /* RichTextEditor.swift in Sources */,
 				2D21553A2C971D7F00698B29 /* ContentView.swift in Sources */,
 				2D21554C2C97248700698B29 /* ProfileView.swift in Sources */,
 				2D21554D2C97248700698B29 /* BonsaiProfile.swift in Sources */,
@@ -364,6 +376,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2D194DBC2C972ABA00A9EFA3 /* XCRemoteSwiftPackageReference "RichTextKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielsaidi/RichTextKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2D194DBD2C972ABA00A9EFA3 /* RichTextKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D194DBC2C972ABA00A9EFA3 /* XCRemoteSwiftPackageReference "RichTextKit" */;
+			productName = RichTextKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2D21552C2C971D7F00698B29 /* Project object */;
 }

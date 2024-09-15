@@ -10,14 +10,16 @@ import SwiftUI
 struct ContentView: View {
     @State private var isShowingScanner = false
     @State private var isShowingProfile = false
-    @StateObject var viewModel = BonsaiProfilesViewModel()
+
+    @EnvironmentObject var viewModel: BonsaiProfilesViewModel
 
     var body: some View {
         NavigationView {
             VStack {
                 List {
                     ForEach(viewModel.profiles) { profile in
-                        NavigationLink(destination: ProfileDetailView(profile: profile)) {
+                        NavigationLink(destination: ProfileDetailView(profile: profile)
+                                        .environmentObject(viewModel)) {
                             Text(profile.speciesName)
                         }
                     }
@@ -51,6 +53,7 @@ struct ContentView: View {
             }
             .sheet(isPresented: $isShowingScanner) {
                 ScannerView()
+                    .environmentObject(viewModel)
             }
             .sheet(isPresented: $isShowingProfile) {
                 NavigationView {

@@ -3,7 +3,7 @@ import SwiftUI
 struct ProfileView: View {
     @State private var speciesName: String = ""
     @State private var startDate: Date = Date()
-    @State private var notes: String = ""
+    @State private var notes: String = "" // Use String for notes
 
     @EnvironmentObject var viewModel: BonsaiProfilesViewModel
     @Environment(\.presentationMode) var presentationMode
@@ -17,6 +17,7 @@ struct ProfileView: View {
             Section(header: Text("Notes")) {
                 TextEditor(text: $notes)
                     .frame(height: 200)
+                    .border(Color(UIColor.separator))
             }
         }
         .navigationTitle("Bonsai Profile")
@@ -34,5 +35,12 @@ struct ProfileView: View {
                 }
             }
         }
+    }
+}
+
+struct ProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileView()
+            .environmentObject(BonsaiProfilesViewModel())
     }
 }

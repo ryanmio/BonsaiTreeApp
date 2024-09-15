@@ -4,5 +4,5 @@ struct BonsaiProfile: Identifiable, Codable {
     var id: UUID = UUID()
     var speciesName: String
     var startDate: Date
-    var notes: String
+    var notes: String // Ensure this is of type String
 }
