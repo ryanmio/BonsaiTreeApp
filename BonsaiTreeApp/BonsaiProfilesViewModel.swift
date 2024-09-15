@@ -22,6 +22,13 @@ class BonsaiProfilesViewModel: ObservableObject {
         }
     }
 
+    func deleteProfile(_ profile: BonsaiProfile) {
+        if let index = profiles.firstIndex(where: { $0.id == profile.id }) {
+            profiles.remove(at: index)
+            saveProfiles()
+        }
+    }
+
     func saveProfiles() {
         if let encodedData = try? encoder.encode(profiles) {
             UserDefaults.standard.set(encodedData, forKey: "profiles")
