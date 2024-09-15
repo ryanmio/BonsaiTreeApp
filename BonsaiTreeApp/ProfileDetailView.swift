@@ -29,6 +29,19 @@ struct ProfileDetailView: View {
                     .frame(height: 200)
                     .border(Color(UIColor.separator))
             }
+            Section(header: Text("Deep Link")) {
+                if let url = URL(string: "bonsaiapp://\(profile.id.uuidString)") {
+                    Text(url.absoluteString)
+                        .contextMenu {
+                            Button(action: {
+                                UIPasteboard.general.string = url.absoluteString
+                            }) {
+                                Text("Copy Link")
+                                Image(systemName: "doc.on.doc")
+                            }
+                        }
+                }
+            }
         }
         .navigationTitle("Edit Profile")
         .navigationBarTitleDisplayMode(.inline)

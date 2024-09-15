@@ -20,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D194DC12C976B1900A9EFA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2D2155342C971D7F00698B29 /* BonsaiTreeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BonsaiTreeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D2155372C971D7F00698B29 /* BonsaiTreeAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonsaiTreeAppApp.swift; sourceTree = "<group>"; };
 		2D2155392C971D7F00698B29 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 		2D2155362C971D7F00698B29 /* BonsaiTreeApp */ = {
 			isa = PBXGroup;
 			children = (
+				2D194DC12C976B1900A9EFA3 /* Info.plist */,
 				2D2155492C97248600698B29 /* BonsaiProfile.swift */,
 				2D2155472C97248600698B29 /* BonsaiProfilesViewModel.swift */,
 				2D2155482C97248600698B29 /* ProfileView.swift */,
@@ -303,6 +305,7 @@
 				DEVELOPMENT_TEAM = 744GVXA64F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BonsaiTreeApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -332,6 +335,7 @@
 				DEVELOPMENT_TEAM = 744GVXA64F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BonsaiTreeApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

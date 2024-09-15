@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var isShowingScanner = false
     @State private var isShowingProfile = false
+    @State private var selectedProfile: BonsaiProfile? = nil // For deep linking
 
     @EnvironmentObject var viewModel: BonsaiProfilesViewModel
 
@@ -25,7 +26,7 @@ struct ContentView: View {
                     }
                 }
                 Spacer()
-                
+
                 Button(action: {
                     isShowingScanner = true
                 }) {
@@ -37,7 +38,7 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
-                
+
                 Spacer()
             }
             .padding()
@@ -52,8 +53,7 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $isShowingScanner) {
-                ScannerView()
-                    .environmentObject(viewModel)
+                // ScannerView() // Optional: Implement if you decide to keep scanning
             }
             .sheet(isPresented: $isShowingProfile) {
                 NavigationView {
@@ -61,6 +61,23 @@ struct ContentView: View {
                         .environmentObject(viewModel)
                 }
             }
+            .onReceive(NotificationCenter.default.publisher(for: .openProfile)) { notification in
+                if let profile = notification.object as? BonsaiProfile {
+                    selectedProfile = profile
+                }
+            }
+            .background(
+                NavigationLink(
+                    destination: ProfileDetailView(profile: selectedProfile ?? viewModel.profiles.first!)
+                        .environmentObject(viewModel),
+                    isActive: Binding(
+                        get: { selectedProfile != nil },
+                        set: { if !$0 { selectedProfile = nil } }
+                    )
+                ) {
+                    EmptyView()
+                }
+            )
         }
     }
 
@@ -70,4 +87,8 @@ struct ContentView: View {
                 .environmentObject(BonsaiProfilesViewModel())
         }
     }
+}
+
+extension Notification.Name {
+    static let openProfile = Notification.Name("OpenProfile")
 }
