@@ -3,7 +3,7 @@ import SwiftUI
 struct ProfileView: View {
     @State private var speciesName: String = ""
     @State private var startDate: Date = Date()
-    @State private var notes: String = "" // Use String for notes
+    @State private var notes: String = ""
 
     @EnvironmentObject var viewModel: BonsaiProfilesViewModel
     @Environment(\.presentationMode) var presentationMode
@@ -26,6 +26,7 @@ struct ProfileView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Save") {
                     let newProfile = BonsaiProfile(
+                        id: UUID(),
                         speciesName: speciesName,
                         startDate: startDate,
                         notes: notes

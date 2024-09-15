@@ -4,7 +4,7 @@ struct ProfileDetailView: View {
     @EnvironmentObject var viewModel: BonsaiProfilesViewModel
     @Environment(\.presentationMode) var presentationMode
 
-    let profile: BonsaiProfile // Use a constant reference
+    var profile: BonsaiProfile
 
     // Local state variables for editing
     @State private var speciesName: String
@@ -35,9 +35,8 @@ struct ProfileDetailView: View {
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button("Save") {
-                    // Create an updated profile
                     let updatedProfile = BonsaiProfile(
-                        id: profile.id, // Keep the same ID
+                        id: profile.id,
                         speciesName: speciesName,
                         startDate: startDate,
                         notes: notes
@@ -53,6 +52,7 @@ struct ProfileDetailView: View {
 struct ProfileDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileDetailView(profile: BonsaiProfile(
+            id: UUID(),
             speciesName: "Maple",
             startDate: Date(),
             notes: "Needs pruning"
