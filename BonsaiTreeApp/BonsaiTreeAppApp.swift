@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct BonsaiTreeAppApp: App {
+    @StateObject private var viewModel = BonsaiProfilesViewModel()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(viewModel)
         }
     }
 }
